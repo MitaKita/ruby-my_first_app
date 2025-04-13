@@ -87,6 +87,11 @@ jobs:
       - name: Grant execute permissions to Rails script
         run: chmod +x bin/rails
 
+      - name: Run Database Migrations
+        run: bin/rails db:migrate
+        env::
+          RAILS_ENV: test
+          
       - name: Run tests
         env:
           RAILS_ENV: test
